@@ -6,16 +6,22 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // importing screen
 import NewsDashboard from './screens/NewsDashboard/NewsDashboard';
-import NewsDetails from './screens/NewsDetails/NewsDetails';
+import NewsSource from './screens/NewsSource/NewsSource';
 import Settings from './screens/Settings/Settings';
+import CustomTabBar from './components/CustomTabBar/CustomTabBar';
 
 const NewsTab = createBottomTabNavigator();
 
 const NewsDashboardTabScreen = () => {
   return (
-    <NewsTab.Navigator screenOptions={{headerShown: false}}>
+    <NewsTab.Navigator
+      screenOptions={{headerShown: false}}
+      tabBar={props => <CustomTabBar {...props} />}
+      tabBarOptions={{
+        showLabel: false,
+      }}>
       <NewsTab.Screen name="NewsDashboard" component={NewsDashboard} />
-      <NewsTab.Screen name="NewsDetails" component={NewsDetails} />
+      <NewsTab.Screen name="NewsSource" component={NewsSource} />
       <NewsTab.Screen name="Settings" component={Settings} />
     </NewsTab.Navigator>
   );

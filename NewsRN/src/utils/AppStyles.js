@@ -1,13 +1,10 @@
-const AppStyles = {
-  rootViewContainer:{
-      flex: 1
-  },
-  darkMode:{
+import AppColor from './AppColor';
 
+const AppStyles = {
+  rootViewContainer: {
+    flex: 1,
+    backgroundColor: AppColor.bgColor,
   },
-  lightMode:{
-    
-  }
-}
+};
 
 export default AppStyles;

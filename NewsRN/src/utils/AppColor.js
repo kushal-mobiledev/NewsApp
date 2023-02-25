@@ -12,7 +12,8 @@ const AppColor = {
   skillText: '#9641E5',
   greyText: '#7B8788',
   searchArticle: '#2475B0',
-  separatorColor: '#DAE0E2'
+  separatorColor: '#DAE0E2',
+  bgColor: '#f7ede2',
 };
 
 export default AppColor;
