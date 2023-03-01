@@ -6,14 +6,16 @@ const AppColor = {
   black: '#000000',
   grey: '#A4B0BD',
   lightGrey: '#C0C0C0',
-  headerBg: '#3498DB',
+  headerBg: '#0000FF',
   headerText: 'purple',
   newsTitle: '#0A3D62',
   skillText: '#9641E5',
   greyText: '#7B8788',
-  searchArticle: '#2475B0',
   separatorColor: '#DAE0E2',
   bgColor: '#f7ede2',
+  selectedCategory: '#05668d',
+  transparent: 'transparent',
+  lightGray: '#c5c3c6',
 };
 
 export default AppColor;

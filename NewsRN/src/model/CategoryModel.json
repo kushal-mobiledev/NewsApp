@@ -1,0 +1,39 @@
+{
+  "newsCategory": [
+    {
+      "categoryID": 1,
+      "categoryName": "Business",
+      "isSelected": true
+    },
+    {
+      "categoryID": 2,
+      "categoryName": "Entertainment",
+      "isSelected": false
+    },
+    {
+      "categoryID": 3,
+      "categoryName": "General",
+      "isSelected": false
+    },
+    {
+      "categoryID": 4,
+      "categoryName": "Health",
+      "isSelected": false
+    },
+    {
+      "categoryID": 5,
+      "categoryName": "Science",
+      "isSelected": false
+    },
+    {
+      "categoryID": 6,
+      "categoryName": "Sports",
+      "isSelected": false
+    },
+    {
+      "categoryID": 7,
+      "categoryName": "Technology",
+      "isSelected": false
+    }
+  ]
+}

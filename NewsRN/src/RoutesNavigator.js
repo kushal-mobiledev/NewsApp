@@ -15,11 +15,17 @@ const NewsTab = createBottomTabNavigator();
 const NewsDashboardTabScreen = () => {
   return (
     <NewsTab.Navigator
-      screenOptions={{headerShown: false}}
-      tabBar={props => <CustomTabBar {...props} />}
-      tabBarOptions={{
-        showLabel: false,
-      }}>
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: [
+          {
+            display: 'flex',
+          },
+          null,
+        ],
+      }}
+      tabBar={props => <CustomTabBar {...props} />}>
       <NewsTab.Screen name="NewsDashboard" component={NewsDashboard} />
       <NewsTab.Screen name="NewsSource" component={NewsSource} />
       <NewsTab.Screen name="Settings" component={Settings} />

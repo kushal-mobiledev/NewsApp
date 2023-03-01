@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {AppColor, AppImage} from '../../utils';
 
-const tabBarHeight = Platform.OS === 'android' ? 60 : 90;
+const tabBarHeight = Platform.OS === 'android' ? 70 : 90;
 
 const CustomTabBar = ({state, descriptors, navigation}) => {
   return (
@@ -29,7 +29,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
         const renderIcon = () => {
           switch (route.name) {
             case 'NewsDashboard':
-              tabLabel = 'NewsDashboard';
+              tabLabel = 'Dashboard';
               return (
                 <Image
                   source={
@@ -39,7 +39,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
                 />
               );
             case 'NewsSource':
-              tabLabel = 'NewsSource';
+              tabLabel = 'Sources';
               return (
                 <Image
                   source={isFocused ? AppImage.sourceActive : AppImage.source}
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    backgroundColor: 'rgba(255,255, 255, 0.5)',
+    backgroundColor: 'rgba(255,155, 255, 0.5)',
   },
   imageStyle: {
     width: 35,
@@ -120,13 +120,11 @@ const styles = StyleSheet.create({
   },
   activeTextStyle: {
     color: AppColor.blue,
-    fontSize: 11,
-    lineHeight: 10.97,
+    fontSize: 14,
   },
   inactiveTextStyle: {
     color: AppColor.black,
-    fontSize: 11,
-    lineHeight: 10.97,
+    fontSize: 14,
   },
   tabButton: {
     flex: 1,
