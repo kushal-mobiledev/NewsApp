@@ -34,7 +34,7 @@ class NewsDashboard extends React.Component {
     this.state = {
       categoryArray: CategoryArray.newsCategory,
       selectedCategoryIndex: 0,
-      selectedCategory: 'Work',
+      selectedCategory: 'Business',
     };
   }
 

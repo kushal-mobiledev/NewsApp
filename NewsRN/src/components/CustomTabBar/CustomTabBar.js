@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    backgroundColor: 'rgba(255,155, 255, 0.5)',
+    backgroundColor: AppColor.selectedCategory,
   },
   imageStyle: {
     width: 35,
     height: 35,
   },
   activeTextStyle: {
-    color: AppColor.blue,
+    color: AppColor.white,
     fontSize: 14,
   },
   inactiveTextStyle: {

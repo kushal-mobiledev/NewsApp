@@ -15,7 +15,7 @@ const HeaderStyle = StyleSheet.create({
     borderRadius: 20,
     marginHorizontal: 10,
     marginTop: 10,
-    backgroundColor: AppColor.headerBg,
+    backgroundColor: AppColor.selectedCategory,
   },
   title: {
     color: AppColor.white,
