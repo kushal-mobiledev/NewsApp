@@ -4,6 +4,13 @@ import {AppColor, AppFonts} from '../../utils';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
 const NewsDashboardStyles = StyleSheet.create({
+  mainContainer: {
+    marginLeft: 10,
+    marginTop: 20,
+    backgroundColor: AppColor.lightGray,
+    width: '95%',
+    height: '100%',
+  },
   topHeadlineText: {
     fontSize: 34,
     fontWeight: 'bold',

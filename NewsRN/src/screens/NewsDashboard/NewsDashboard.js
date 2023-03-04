@@ -35,10 +35,19 @@ class NewsDashboard extends React.Component {
       categoryArray: CategoryArray.newsCategory,
       selectedCategoryIndex: 0,
       selectedCategory: 'Business',
+      isLoading: false,
+      isRefreshing: false,
+      newsList: [],
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    if (this.context.isConnected) {
+      this.setState({isLoading: true}, () => {
+        this.getNewsList();
+      });
+    }
+  }
 
   onShowCountry = () => {
     alert('hi');
@@ -100,8 +109,125 @@ class NewsDashboard extends React.Component {
     );
   };
 
-  renderNewsList = () => {
-    return <Text>News List</Text>;
+  getNewsList = () => {
+    axios
+      .get(
+        `${APIStrings.baseURL}country=${APIStrings.country}&category=${this.state.selectedCategory}&apiKey=${APIStrings.apiKey}&pageSize=10&page=${this.page}`,
+      )
+      .then(response => {
+        let responseJSON = response.data;
+
+        this.setState(
+          {newsList: responseJSON.articles, isLoading: false},
+          () => {
+            this.arrayholder = this.state.newsList;
+          },
+        );
+      })
+      .catch(error => {
+        this.setState({isLoading: false});
+        Toast.show({text: AppStrings.apiCallError});
+      });
+  };
+
+  handleLoadMore = () => {
+    if (!this.state.isLoading) {
+      this.setState({isRefreshing: true});
+      this.page = this.page + 1;
+      this.loadMoreNewsList(this.page);
+    }
+  };
+
+  loadMoreNewsList = pageIndex => {
+    axios
+      .get(
+        `${APIStrings.baseURL}country=${APIStrings.country}&category=${this.state.selectedCategory}&apiKey=${APIStrings.apiKey}&pageSize=10&page=${pageIndex}`,
+      )
+      .then(response => {
+        let responseJSON = response.data;
+        this.setState(
+          {
+            newsList: [...this.state.newsList, ...responseJSON.articles],
+            isRefreshing: false,
+          },
+          () => {
+            this.arrayholder = this.state.newsList;
+          },
+        );
+      })
+      .catch(error => {
+        this.setState({isRefreshing: false});
+        Toast.show({text: AppStrings.apiCallError});
+      });
+  };
+
+  onRefresh = () => {
+    this.page = 1;
+    this.setState({isLoading: true, newsList: []}, () => {
+      this.getNewsList();
+    });
+  };
+
+  gotoNewsDetailScreen = newsDetail => {
+    // this.props.navigation.navigate('NewsDetails', {
+    //   newsDetail,
+    // });
+    alert('click ho raha hai');
+  };
+
+  renderNewsList = (item, index) => {
+    console.log(item.author);
+    return (
+      <TouchableOpacity onPress={this.gotoNewsDetailScreen}>
+        <View
+          style={{
+            marginVertical: 10,
+            backgroundColor: AppColor.white,
+            borderRadius: 10,
+          }}>
+          <Text style={{}}>{item.title}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  renderFooter = () => {
+    return (
+      <View style={NewsDashboardStyles.footer}>
+        {this.state.isRefreshing ? <Loader loading={true} /> : null}
+      </View>
+    );
+  };
+
+  renderFlatlist = () => {
+    return (
+      <FlatList
+        style={{marginHorizontal: 10, marginTop: 10, backgroundColor: 'red'}}
+        data={this.state.newsList}
+        extraData={this.state.newsList}
+        keyExtractor={item => item.url.toString()}
+        renderItem={({item, index}) => this.renderNewsList(item, index)}
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.isLoading}
+            onRefresh={this.onRefresh}
+            colors={[AppColor.bgColor]}
+          />
+        }
+        ItemSeparatorComponent={this.renderSeparator}
+        ListFooterComponent={this.renderFooter}
+        onEndReachedThreshold={0.5}
+        onEndReached={() => {
+          if (!this.onEndReachedCalledDuringMomentum) {
+            this.handleLoadMore();
+            this.onEndReachedCalledDuringMomentum = true;
+          }
+        }}
+        onMomentumScrollBegin={() => {
+          this.onEndReachedCalledDuringMomentum = false;
+        }}
+      />
+    );
   };
 
   render() {
@@ -112,13 +238,10 @@ class NewsDashboard extends React.Component {
           showCountry={true}
           handleOnShowCountry={this.onShowCountry}
         />
-        <View
-          style={{
-            marginLeft: 10,
-            marginTop: 20,
-          }}>
+        <View style={NewsDashboardStyles.mainContainer}>
           {this.renderTopHeadlinesSection()}
-          {this.renderNewsList()}
+          <Loader loading={this.state.isLoading} />
+          {this.context.isConnected ? this.renderFlatlist() : null}
         </View>
       </SafeAreaView>
     );
