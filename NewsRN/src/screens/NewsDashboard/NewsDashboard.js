@@ -7,7 +7,7 @@ import {
   FlatList,
   ActivityIndicator,
   RefreshControl,
-  TextInput,
+  Image,
   ScrollView,
   Dimensions,
 } from 'react-native';
@@ -77,9 +77,12 @@ class NewsDashboard extends React.Component {
                       element.isSelected = false;
                     }
                   });
-                  this.setState({
-                    categoryArray: categoryArr,
-                  });
+                  this.setState(
+                    {
+                      categoryArray: categoryArr,
+                    },
+                    () => this.onRefresh(),
+                  );
                 }}
                 style={{
                   ...NewsDashboardStyles.categoryBtnStyle,
@@ -120,6 +123,7 @@ class NewsDashboard extends React.Component {
         this.setState(
           {newsList: responseJSON.articles, isLoading: false},
           () => {
+            // alert(JSON.stringify(this.state.newsList));
             this.arrayholder = this.state.newsList;
           },
         );
@@ -176,7 +180,6 @@ class NewsDashboard extends React.Component {
   };
 
   renderNewsList = (item, index) => {
-    console.log(item.author);
     return (
       <TouchableOpacity onPress={this.gotoNewsDetailScreen}>
         <View
@@ -184,8 +187,41 @@ class NewsDashboard extends React.Component {
             marginVertical: 10,
             backgroundColor: AppColor.white,
             borderRadius: 10,
+            padding: 10,
           }}>
-          <Text style={{}}>{item.title}</Text>
+          {item.urlToImage !== null ? (
+            <View>
+              <Image
+                source={{uri: item.urlToImage}}
+                style={{
+                  width: '100%',
+                  height: 200,
+                  resizeMode: 'cover',
+                  borderRadius: 10,
+                }}
+              />
+              <View
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  bottom: 0,
+                  justifyContent: 'space-between',
+                }}>
+                <Text></Text>
+                <Text
+                  style={{
+                    backgroundColor: AppColor.black,
+                    color: AppColor.white,
+                    justifyContent: 'flex-end',
+                    marginBottom: 10,
+                  }}>
+                  {item.title}
+                </Text>
+              </View>
+            </View>
+          ) : (
+            <Text style={{}}>{item.title}</Text>
+          )}
         </View>
       </TouchableOpacity>
     );
@@ -202,7 +238,7 @@ class NewsDashboard extends React.Component {
   renderFlatlist = () => {
     return (
       <FlatList
-        style={{marginHorizontal: 10, marginTop: 10, backgroundColor: 'red'}}
+        style={{marginHorizontal: 10, marginTop: 10}}
         data={this.state.newsList}
         extraData={this.state.newsList}
         keyExtractor={item => item.url.toString()}
