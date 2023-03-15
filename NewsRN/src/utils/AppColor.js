@@ -16,6 +16,7 @@ const AppColor = {
   selectedCategory: '#05668d',
   transparent: 'transparent',
   lightGray: '#c5c3c6',
+  blackOpacity: 'rgba(0, 0, 0, 0.5)',
 };
 
 export default AppColor;

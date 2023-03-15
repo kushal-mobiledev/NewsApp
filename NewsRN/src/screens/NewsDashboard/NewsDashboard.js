@@ -206,17 +206,24 @@ class NewsDashboard extends React.Component {
                   top: 0,
                   bottom: 0,
                   justifyContent: 'space-between',
+                  width: '100%'
                 }}>
-                <Text></Text>
-                <Text
+                <Text />
+                <View
                   style={{
-                    backgroundColor: AppColor.black,
-                    color: AppColor.white,
-                    justifyContent: 'flex-end',
-                    marginBottom: 10,
+                    backgroundColor: AppColor.blackOpacity,
+                    width: '100%',
                   }}>
-                  {item.title}
-                </Text>
+                  <Text
+                    style={{
+                      color: AppColor.white,
+                      justifyContent: 'flex-end',
+                      paddingVertical: 5,
+                      paddingHorizontal: 5
+                    }}>
+                    {item.title}
+                  </Text>
+                </View>
               </View>
             </View>
           ) : (
