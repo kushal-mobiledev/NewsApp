@@ -13,7 +13,7 @@ const AppColor = {
   greyText: '#7B8788',
   separatorColor: '#DAE0E2',
   bgColor: '#f7ede2',
-  selectedCategory: '#05668d',
+  selectedCategory: '#023e8a',
   transparent: 'transparent',
   lightGray: '#c5c3c6',
   blackOpacity: 'rgba(0, 0, 0, 0.5)',

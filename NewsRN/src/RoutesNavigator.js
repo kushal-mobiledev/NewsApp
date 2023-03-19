@@ -6,11 +6,25 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // importing screen
 import NewsDashboard from './screens/NewsDashboard/NewsDashboard';
-import NewsSource from './screens/NewsSource/NewsSource';
+import NewsDetails from './screens/NewsDetails/NewsDetails';
 import Settings from './screens/Settings/Settings';
 import CustomTabBar from './components/CustomTabBar/CustomTabBar';
 
 const NewsTab = createBottomTabNavigator();
+const NewsContentStack = createStackNavigator();
+
+const NewsStack = () => {
+  return (
+    <NewsContentStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: false,
+      }}>
+      <NewsContentStack.Screen name="NewsDashboard" component={NewsDashboard} />
+      <NewsContentStack.Screen name="NewsDetails" component={NewsDetails} />
+    </NewsContentStack.Navigator>
+  );
+};
 
 const NewsDashboardTabScreen = () => {
   return (
@@ -26,8 +40,7 @@ const NewsDashboardTabScreen = () => {
         ],
       }}
       tabBar={props => <CustomTabBar {...props} />}>
-      <NewsTab.Screen name="NewsDashboard" component={NewsDashboard} />
-      <NewsTab.Screen name="NewsSource" component={NewsSource} />
+      <NewsTab.Screen name="NewsDashboardStack" component={NewsStack} />
       <NewsTab.Screen name="Settings" component={Settings} />
     </NewsTab.Navigator>
   );

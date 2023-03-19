@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   SafeAreaView,
   FlatList,
-  ActivityIndicator,
   RefreshControl,
   Image,
   ScrollView,
@@ -14,7 +13,7 @@ import {
 import HeaderComponent from '../../components/Header/HeaderComponent';
 import NewsDashboardStyles from './NewsDashboardStyles';
 import axios from 'axios';
-import {AppStyles, AppColor, AppFonts, AppStrings} from '../../utils';
+import {AppStyles, AppColor, AppStrings} from '../../utils';
 import APIStrings from '../../webservice/APIStrings';
 import Loader from '../../components/Loader/Loader';
 import {NetworkContext} from '../../components/NoInternet/OfflineNotify';
@@ -49,9 +48,7 @@ class NewsDashboard extends React.Component {
     }
   }
 
-  onShowCountry = () => {
-    alert('hi');
-  };
+  onShowCountry = () => {};
 
   renderSeparator = () => <View style={NewsDashboardStyles.separatorView} />;
 
@@ -173,21 +170,17 @@ class NewsDashboard extends React.Component {
   };
 
   gotoNewsDetailScreen = newsDetail => {
-    // this.props.navigation.navigate('NewsDetails', {
-    //   newsDetail,
-    // });
-    alert('click ho raha hai');
+    this.props.navigation.navigate('NewsDetails', {
+      newsItemObj: newsDetail,
+    });
   };
 
   renderNewsList = (item, index) => {
     return (
-      <TouchableOpacity onPress={this.gotoNewsDetailScreen}>
+      <TouchableOpacity onPress={() => this.gotoNewsDetailScreen(item)}>
         <View
           style={{
             marginVertical: 10,
-            backgroundColor: AppColor.white,
-            borderRadius: 10,
-            padding: 10,
           }}>
           {item.urlToImage !== null ? (
             <View>
@@ -206,7 +199,7 @@ class NewsDashboard extends React.Component {
                   top: 0,
                   bottom: 0,
                   justifyContent: 'space-between',
-                  width: '100%'
+                  width: '100%',
                 }}>
                 <Text />
                 <View
@@ -219,7 +212,7 @@ class NewsDashboard extends React.Component {
                       color: AppColor.white,
                       justifyContent: 'flex-end',
                       paddingVertical: 5,
-                      paddingHorizontal: 5
+                      paddingHorizontal: 5,
                     }}>
                     {item.title}
                   </Text>
@@ -227,7 +220,7 @@ class NewsDashboard extends React.Component {
               </View>
             </View>
           ) : (
-            <Text style={{}}>{item.title}</Text>
+            <Text>{item.title}</Text>
           )}
         </View>
       </TouchableOpacity>

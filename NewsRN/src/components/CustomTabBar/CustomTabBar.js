@@ -28,7 +28,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
 
         const renderIcon = () => {
           switch (route.name) {
-            case 'NewsDashboard':
+            case 'NewsDashboardStack':
               tabLabel = 'Dashboard';
               return (
                 <Image

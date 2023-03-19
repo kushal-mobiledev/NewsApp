@@ -10,17 +10,13 @@ const HeaderStyle = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     alignSelf: 'center',
-    width: '95%',
+    width: '100%',
     height: '8%',
-    borderRadius: 20,
-    marginHorizontal: 10,
-    marginTop: 10,
     backgroundColor: AppColor.selectedCategory,
   },
   title: {
     color: AppColor.white,
     fontSize: DEVICE_WIDTH * 0.06,
-    fontFamily: AppFonts.bold,
     textAlign: 'center',
   },
 });

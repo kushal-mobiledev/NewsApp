@@ -7,7 +7,6 @@ const NewsDashboardStyles = StyleSheet.create({
   mainContainer: {
     marginLeft: 10,
     marginTop: 20,
-    backgroundColor: AppColor.lightGray,
     width: '95%',
     height: '100%',
   },
