@@ -38,11 +38,11 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
                   style={styles.imageStyle}
                 />
               );
-            case 'NewsSource':
-              tabLabel = 'Sources';
+            case 'Profile':
+              tabLabel = 'Profile';
               return (
                 <Image
-                  source={isFocused ? AppImage.sourceActive : AppImage.source}
+                  source={isFocused ? AppImage.profileActive : AppImage.profile}
                   style={styles.imageStyle}
                 />
               );

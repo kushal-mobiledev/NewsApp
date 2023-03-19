@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // importing screen
 import NewsDashboard from './screens/NewsDashboard/NewsDashboard';
 import NewsDetails from './screens/NewsDetails/NewsDetails';
+import Profile from './screens/Profile/Profile';
 import Settings from './screens/Settings/Settings';
 import CustomTabBar from './components/CustomTabBar/CustomTabBar';
 
@@ -41,6 +42,7 @@ const NewsDashboardTabScreen = () => {
       }}
       tabBar={props => <CustomTabBar {...props} />}>
       <NewsTab.Screen name="NewsDashboardStack" component={NewsStack} />
+      <NewsTab.Screen name="Profile" component={Profile} />
       <NewsTab.Screen name="Settings" component={Settings} />
     </NewsTab.Navigator>
   );
