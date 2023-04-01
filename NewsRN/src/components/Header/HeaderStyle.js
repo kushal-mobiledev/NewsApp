@@ -18,6 +18,19 @@ const HeaderStyle = StyleSheet.create({
     color: AppColor.white,
     fontSize: DEVICE_WIDTH * 0.06,
     textAlign: 'center',
+    fontFamily: AppFonts.regular,
+  },
+  centeredView: {
+    flex: 1,
+    marginTop: 22,
+    backgroundColor: AppColor.white,
+  },
+  modalView: {
+    height: '100%',
+  },
+  modalHeading: {
+    fontSize: 24,
+    fontFamily: AppFonts.bold,
   },
 });
 

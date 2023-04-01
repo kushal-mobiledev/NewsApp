@@ -100,11 +100,11 @@ class Profile extends React.Component {
             <Text
               style={{
                 color: AppColor.white,
-                fontSize: actuatedNormalize(18),
+                fontSize: actuatedNormalize(14),
                 marginLeft: actuatedNormalize(20),
                 textAlign: 'center',
               }}>
-              Email
+              kushaldesai1990.work@gmail.com
             </Text>
           </View>
         </TouchableOpacity>

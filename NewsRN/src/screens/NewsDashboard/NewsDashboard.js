@@ -8,7 +8,6 @@ import {
   RefreshControl,
   Image,
   ScrollView,
-  Dimensions,
 } from 'react-native';
 import HeaderComponent from '../../components/Header/HeaderComponent';
 import NewsDashboardStyles from './NewsDashboardStyles';
@@ -19,8 +18,6 @@ import Loader from '../../components/Loader/Loader';
 import {NetworkContext} from '../../components/NoInternet/OfflineNotify';
 import {Root, Toast} from 'native-base';
 import * as CategoryArray from '../../model/CategoryModel.json';
-
-const DEVICE_WIDTH = Dimensions.get('window').width;
 
 class NewsDashboard extends React.Component {
   static contextType = NetworkContext;

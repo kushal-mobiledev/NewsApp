@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-import {AppColor, AppImage} from '../../utils';
+import {AppColor, AppFonts, AppImage} from '../../utils';
 
 const tabBarHeight = Platform.OS === 'android' ? 70 : 90;
 
@@ -121,10 +121,12 @@ const styles = StyleSheet.create({
   activeTextStyle: {
     color: AppColor.white,
     fontSize: 14,
+    fontFamily: AppFonts.regular,
   },
   inactiveTextStyle: {
     color: AppColor.black,
     fontSize: 14,
+    fontFamily: AppFonts.regular,
   },
   tabButton: {
     flex: 1,
